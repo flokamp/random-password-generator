@@ -1,3 +1,17 @@
+// function to get password length from user
+function generatePassword() {
+  var promptLength = window.prompt('How many characters would you like your password to be? Enter a number between 1 and 128.');
+
+  if (promptLength === "" || promptLength === null || promptLength < 8 || promptLength > 128) {
+    window.alert("You need to provide a valid length! Please try again by entering a number between 1 and 128.")
+    return generatePassword();
+  }
+
+  else {
+    window.alert("Your password will be " + promptLength + " characters long.")
+  }  
+}
+
 // function to generate random uppercase letter
 function randomUpper() {
   var randomString = "";
@@ -36,20 +50,6 @@ var randomSymbol = function(){
     randomString += symbol.charAt(Math.floor(Math.random() * symbol.length));
   }
   return randomString
-}
-
-// function to get password length from user
-var passwordLength = function() {
-  var promptLength = window.prompt('How many characters would you like your password to be? Enter a number between 1 and 128.');
-
-  if (promptLength === "" || promptLength === null || promptLength < 8 || promptLength > 128) {
-    window.alert("You need to provide a valid length! Please try again by entering a number between 1 and 128.")
-    return passwordLength();
-  }
-
-  else {
-      window.alert("Your password will be " + promptLength + " characters long.")
-    }
 }
 
 // Get references to the #generate element
