@@ -71,7 +71,7 @@ var passwordPrompts = function() {
       // check to see if symbol is true or false
       console.log(confirmSymbol)
     }
-    return choiceArr;
+    return true;
 }
 
 
