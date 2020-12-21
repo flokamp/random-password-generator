@@ -1,4 +1,4 @@
-var promptLength = [];
+var promptLength = 0;
 var choiceArr = []; 
 var upperArr= ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var lowerArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -7,7 +7,7 @@ var symbolArr = ['!','@','#','$','%','^','&','*'];
 
 // function to get password length from user
 var passwordPrompts = function() {
-  var promptLength = parseInt(prompt('How many characters would you like your password to be? Enter a number between 1 and 128.'));
+  promptLength = parseInt(prompt('How many characters would you like your password to be? Enter a number between 1 and 128.'));
     // invalid input
     while ( isNaN(promptLength) || promptLength === "" || promptLength === null || promptLength < 8 || promptLength > 128) {
       window.alert("Please enter a number between 1 and 128.")
@@ -74,17 +74,17 @@ var passwordPrompts = function() {
     return true;
 }
 
-
-
 // function to generate password using chosen characters
 function generatePassword() {
+  console.log(choiceArr)
   var password= "";
   for(var i = 0; i < promptLength; i++) {
     var randomCharacter = Math.floor(Math.random() * choiceArr.length);
     password = password + choiceArr[randomCharacter];
   }
-  return password;
+  return password
 }
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -97,7 +97,7 @@ function writePassword() {
    var newPassword = generatePassword();
    var passwordText = document.querySelector("#password");
 
-  passwordText.value = newPassword;
+    passwordText.value = newPassword;
   }
 }
 
