@@ -3,10 +3,10 @@ var choiceArr = [];
 var upperArr= ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var lowerArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var numberArr = ['1','2','3','4','5','6','7','8','9','0'];
-var symbolArr = ['!','@','#','$','%','^','&','*'];
+var symbolArr = ['!','@','#','$','%','^','&','*','+','?',`[`,']',':',';','/','{','}'];
 
-// function to get password length from user
 var passwordPrompts = function() {
+  // function to get password length from user
   promptLength = parseInt(prompt('How many characters would you like your password to be? Enter a number between 1 and 128.'));
     // invalid input
     while ( isNaN(promptLength) || promptLength === "" || promptLength === null || promptLength < 8 || promptLength > 128) {
@@ -33,8 +33,7 @@ var passwordPrompts = function() {
       // add lowercase letters to array
       choiceArr = choiceArr.concat(lowerArr);
       window.alert("Your password will include lowercase letters.")
-    }
-    else {
+    } else {
       window.alert("Your password will not include lowercase letters.")
     }
     // check to see if lowercase is true or false
@@ -46,8 +45,7 @@ var passwordPrompts = function() {
       // add numbers to array
       choiceArr = choiceArr.concat(numberArr);
       window.alert("Your password will include numbers.")
-    }
-    else {
+    } else {
       window.alert("Your password will NOT include numbers.")
     }
     // check to see if number is true or false
@@ -85,7 +83,6 @@ function generatePassword() {
   return password
 }
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -94,8 +91,8 @@ function writePassword() {
   var promptsExist = passwordPrompts();
 
   if (promptsExist) {
-   var newPassword = generatePassword();
-   var passwordText = document.querySelector("#password");
+    var newPassword = generatePassword();
+    var passwordText = document.querySelector("#password");
 
     passwordText.value = newPassword;
   }
