@@ -1,12 +1,11 @@
 // function to get password length from user
 function passwordLength() {
   var promptLength = window.prompt('How many characters would you like your password to be? Enter a number between 1 and 128.');
-
+  // invalid input
   if (promptLength === "" || promptLength === null || promptLength < 8 || promptLength > 128) {
-    window.alert("You need to provide a valid length! Please try again by entering a number between 1 and 128.")
+    window.alert("Please enter a number between 1 and 128.")
     return passwordLength();
   }
-
   else {
     window.alert("Your password will be " + promptLength + " characters long.")
     return passwordCharacters();
@@ -15,41 +14,53 @@ function passwordLength() {
 
 // function to determine characters to use
 function passwordCharacters (){
-  var uppers = confirm("Would you like to use uppercase letters?");
-    if (uppers) {
+  // ask if user wants to include uppercase characters
+  var confirmUpper = confirm("Would you like to use uppercase letters?");
+    if (confirmUpper) {
       window.alert("Your password will include uppercase letters.")
-      charactersAllowed.push('upper');
     }
     else {
       window.alert("Your password will not include uppercase letters.")
     }
-  var lowers = confirm("Would you like to use lowercase letters?");
-    if (lowers) {
+
+  // ask if user wants to include lowercase characters
+  var confirmLower = confirm("Would you like to use lowercase letters?");
+    if (confirmLower) {
       window.alert("Your password will include lowercase letters.")
       charactersAllowed.push('lower');
     }
     else {
       window.alert("Your password will not include lowercase letters.")
     }
-  var numbers = confirm("Would you like to use numbers?");
-    if (numbers) {
+  
+  // ask if user wants to include numbers
+  var confirmNumber = confirm("Would you like to use numbers?");
+    if (confirmNumber) {
       window.alert("Your password will include numbers.")
       charactersAllowed.push('number');
     }
     else {
       window.alert("Your password will NOT include numbers.")
     }
-  var symbols = confirm("Would you like to use special characters?");
-    if (symbols) {
-      window.alert("Your password will include symbols.")
-      charactersAllowed.push('symbol');
+
+  // automatically set password to use symbols if all other character types are false
+    if (confirmUpper === false && confirmLower === false && confirmNumber === false) {
+        window.alert("Your password will only include symbols.")
+        charactersAllowed.push('symbol');
     }
     else {
-      window.alert("Your password will NOT include numbers.")
+      var confirmSymbol = confirm("Would you like to use symbols?")
+      if (confirmSymbol) {
+        window.alert("Your password will include symbols.")
+        charactersAllowed.push('symbol');
+      }
+      else {
+        window.alert("Your password will NOT include symbols.")
+      }
     }
-}
+  }
 
-// password character array
+  // password character array
  var charactersAllowed = [];
  console.log(charactersAllowed);
 
