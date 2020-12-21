@@ -4,4 +4,5 @@ The user can choose the password length and characters to include in their passw
 
 # Deployed Application
 https://flokamp.github.io/random-password-generator/
+
 ![Webpage Screenshot](./assets/images/screenshot.png)
