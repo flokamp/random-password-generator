@@ -1,19 +1,60 @@
 // function to get password length from user
-function generatePassword() {
+function passwordLength() {
   var promptLength = window.prompt('How many characters would you like your password to be? Enter a number between 1 and 128.');
 
   if (promptLength === "" || promptLength === null || promptLength < 8 || promptLength > 128) {
     window.alert("You need to provide a valid length! Please try again by entering a number between 1 and 128.")
-    return generatePassword();
+    return passwordLength();
   }
 
   else {
     window.alert("Your password will be " + promptLength + " characters long.")
+    return passwordCharacters();
   }  
 }
 
+// function to determine characters to use
+function passwordCharacters (){
+  var uppers = confirm("Would you like to use uppercase letters?");
+    if (uppers) {
+      window.alert("Your password will include uppercase letters.")
+      charactersAllowed.push('upper');
+    }
+    else {
+      window.alert("Your password will not include uppercase letters.")
+    }
+  var lowers = confirm("Would you like to use lowercase letters?");
+    if (lowers) {
+      window.alert("Your password will include lowercase letters.")
+      charactersAllowed.push('lower');
+    }
+    else {
+      window.alert("Your password will not include lowercase letters.")
+    }
+  var numbers = confirm("Would you like to use numbers?");
+    if (numbers) {
+      window.alert("Your password will include numbers.")
+      charactersAllowed.push('number');
+    }
+    else {
+      window.alert("Your password will NOT include numbers.")
+    }
+  var symbols = confirm("Would you like to use special characters?");
+    if (symbols) {
+      window.alert("Your password will include symbols.")
+      charactersAllowed.push('symbol');
+    }
+    else {
+      window.alert("Your password will NOT include numbers.")
+    }
+}
+
+// password character array
+ var charactersAllowed = [];
+ console.log(charactersAllowed);
+
 // function to generate random uppercase letter
-function randomUpper() {
+ function randomUpper() {
   var randomString = "";
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   for(var i, i = 0; i < uppercase.length; i++){
@@ -62,6 +103,3 @@ function writePassword() {
 
   passwordText.value = password;
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
